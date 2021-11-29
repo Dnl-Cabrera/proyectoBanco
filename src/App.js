@@ -1,13 +1,16 @@
 //library React
 import React from "react"
-//Apps
+
+//Pages
+import InicioAplicacion from "./pages/InicioAplicacion/"
+
 
 class App extends React.Component{
 
     render(){
         return(
             <div>
-                "Hola mundo"
+                <InicioAplicacion/>
             </div>
         )
     }
