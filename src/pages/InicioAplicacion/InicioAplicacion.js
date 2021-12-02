@@ -1,5 +1,5 @@
 //React Library
-import React, { Component } from "react";
+import React from "react";
 
 //Bootstrap Library
 //import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
@@ -122,7 +122,6 @@ class InicioAplicacion extends React.Component {
                         </div>
                     </div>
                 </footer>
-
             </div>
         )
     }
