@@ -12,14 +12,15 @@ import AdminModificarInternalUser from "./pages/Administrador/AdminModificarInte
 import AdminModificarUser from "./pages/Administrador/AdminModificarUser/AdminModificarUser"
 import VisualizarUser from "./pages/Administrador/VisualizarUser/VisualizarUser";
 
+//Paginas Cliente
+import ClienteAdministrador from "./pages/Clientes/ClienteAdministrador/ClienteAdministrador"
+
 class App extends React.Component{
 
     render(){
         return(
             <div>
-                <NavAdministrador>
-                    <VisualizarUser/>
-                </NavAdministrador>
+                <ClienteAdministrador/>
                 
             </div>
         )
