@@ -15,13 +15,15 @@ import VisualizarUser from "./pages/Administrador/VisualizarUser/VisualizarUser"
 //Paginas Cliente
 import ClienteAdministrador from "./pages/Clientes/ClienteAdministrador/ClienteAdministrador"
 
+//Pagina Registro
+import Registro from "./pages/Registro";
+
 class App extends React.Component{
 
     render(){
         return(
             <div>
-                <ClienteAdministrador/>
-                
+                    <Registro/>
             </div>
         )
     }
