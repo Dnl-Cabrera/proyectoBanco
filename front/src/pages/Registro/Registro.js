@@ -16,19 +16,21 @@ import FormularioRegistro from "../../components/Registro/FormularioRegistro";
 class Registro extends React.Component {
 
 
+
     datosObtenidos = (datos) => {
 
-        if(datos.tipoUsuario==="Cliente"){
-            console.log("Es cliente");
-        }
-        else if(datos.tipoUsuario==="Usuario interno"){
-            console.log("Es interno");
-        }
-        else if(datos.tipoUsuario==="Administrador"){
-            console.log("Es administrador");
-        }
-
-        
+        fetch("http://localhost:8080/crearUsuario/crear", {
+            method: "POST",
+            body: JSON.stringify(datos),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .catch((error) => console.error("Error:", error))
+            .then((response) => {
+                console.log(response);
+            });
     }
 
 
@@ -86,8 +88,8 @@ class Registro extends React.Component {
                 <section className="registro">
                     <div className="container mt-3">
 
-                        <FormularioRegistro bus={this.datosObtenidos}/>
-                        
+                        <FormularioRegistro bus={this.datosObtenidos} />
+
                     </div>
                 </section>
 
