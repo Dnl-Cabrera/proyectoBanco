@@ -10,30 +10,31 @@ import "../../style/css/aos.css"
 import "../../style/css/templatemo-nomad-force.css"
 import "../../style/css/custon.css"
 
-class Registro extends React.Component{
+//Components library
+import FormularioRegistro from "../../components/Registro/FormularioRegistro";
 
-    nombre=React.createRef();
-    tipoCedula=React.createRef();
-    numeroCedula=React.createRef();
-    fechaExpedicion=React.createRef();
-    valorIngresos=React.createRef();
-    valorEgresos=React.createRef();
-    correo=React.createRef();
-    confirmarCorreo=React.createRef();
-    pass=React.createRef();
-    confirmarPass=React.createRef();
-    tipoUsuario=React.createRef();
+class Registro extends React.Component {
 
 
-    envioDatos = (e) =>{
-        e.preventDefault();
-        alert(this.tipoUsuario.current.value)
+    datosObtenidos = (datos) => {
+
+        if(datos.tipoUsuario==="Cliente"){
+            console.log("Es cliente");
+        }
+        else if(datos.tipoUsuario==="Usuario interno"){
+            console.log("Es interno");
+        }
+        else if(datos.tipoUsuario==="Administrador"){
+            console.log("Es administrador");
+        }
+
+        
     }
 
 
-    render(){
+    render() {
 
-        return(
+        return (
             <div>
                 <nav className="navbar navbar-expand-lg bg-light shadow-lg">
                     <div className="container">
@@ -75,80 +76,20 @@ class Registro extends React.Component{
                 </nav>
 
                 <section class="login p-3">
-                <div class="container">
-                    <div class="login-title">
-                        <p><h1 class="text-center text-dark">Registro</h1></p>
+                    <div class="container">
+                        <div class="login-title">
+                            <p><h1 class="text-center text-dark">Registro</h1></p>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
                 <section className="registro">
-                <div className="container mt-3">
+                    <div className="container mt-3">
 
-                    <form onSubmit={this.envioDatos} className="text-center">
-                        <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
-                            <label for="Username"></label>
-                            <input type="text" className="form-control" placeholder="Nombres y apellidos" aria-label="Username" aria-describedby="basic-addon1" ref={this.nombre}/>
-                        </div>
-                        <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
-                            <select className="col-xs-2 col-md-12 placeholder= Tipo de documento" ref={this.tipoCedula}>
-                                <option>Cedula</option>
-                                <option>Cedula de extranjeria</option>
-                                <option>Pasaporte</option>
-                            </select>
-                        </div>
-                        <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
-                            <label for="NumeroDocumento"></label>
-                            <input type="Text" className="form-control" placeholder="Número de documento" aria-label="NumeroDocumento" aria-describedby="basic-addon1" ref={this.numeroCedula}/>
-                        </div>
-                      
-                        <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
-                            <div className="input-group date" id="datepicker">
-                                <input type="date" className="form-control" ref={this.fechaExpedicion}/>
-                            </div>
-                        </div>
-
-                        <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
-                            <label for="Username"></label>
-                            <input type="number" className="form-control" placeholder="Valor ingresos" ref={this.valorIngresos}/>
-                        </div>
-
-                        <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
-                            <label for="Username"></label>
-                            <input type="number" className="form-control" placeholder="Valor egresos" ref={this.valorEgresos}/>
-                        </div>
-
-                        <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
-                            <label for="email"></label>
-                            <input type="email" className="form-control" placeholder="Ingrese correo electrónico" ref={this.correo}/>
-                        </div>
-                        <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
-                            <label for="email"></label>
-                            <input type="email" className="form-control" placeholder="Confirme correo electrónico" ref={this.confirmarCorreo}/>
-                        </div>
-                        <div className="mb-3 col-xs-2 col-md-4 center-block">
-                            <label for="pwd"></label>
-                            <input type="password" className="form-control" placeholder="Ingrese contraseña" ref={this.pass}/>
-                        </div>
-                        <div className="mb-3 col-xs-2 col-md-4 center-block">
-                            <label for="pwd"></label>
-                            <input type="password" className="form-control" placeholder="Confirme contraseña" ref={this.confirmarPass}/>
-                        </div>
-
-                        <select className="mb-3 col-xs-2 col-md-4 center-block" ref={this.tipoUsuario}>
-                            <option>Cliente</option>
-                            <option>Usuario interno</option>
-                            <option>Administrador</option>
-                        </select>
-                       
-                        <div className="login-registro">
-                            <input type="submit" className="btn btn-danger" value="Registrar"/>
+                        <FormularioRegistro bus={this.datosObtenidos}/>
                         
-                        </div>
-
-                    </form>
-                </div>
-            </section>
+                    </div>
+                </section>
 
                 <footer className="site-footer">
                     <div className="container">
