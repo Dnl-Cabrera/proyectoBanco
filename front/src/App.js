@@ -13,14 +13,14 @@ import AdminModificarInternalUser from "./pages/Administrador/AdminModificarInte
 import AdminModificarUser from "./pages/Administrador/AdminModificarUser/AdminModificarUser"
 import VisualizarUser from "./pages/Administrador/VisualizarUser/VisualizarUser";
 
+//Pagina Inicio
+import Login from "./pages/Login";
+
 //Paginas Cliente
 import ClienteAdministrador from "./pages/Clientes/ClienteAdministrador/ClienteAdministrador"
 import ClienteCertificado from "./pages/Clientes/ClienteCertificado"
 import ClienteSolicitudCredito from "./pages/Clientes/ClienteSolicitudCredito"
 import ClienteSolicitudProrroga from "./pages/Clientes/ClienteSolicitudProrroga"
-
-//
-import Boton from "./components/Cliente/Boton"
 
 //Pagina Registro
 import Registro from "./pages/Registro";
@@ -30,7 +30,7 @@ class App extends React.Component{
     render(){
         return(
             <div>
-                    <AdminAprobarSolicitud/>
+                    <Login/>
             </div>
         )
     }

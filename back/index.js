@@ -2,6 +2,7 @@ const express=require("express");
 const cors=require("cors");
 
 const rutas=require("./Routes/rutasAdministrador")
+const rutaLogin=require("./Routes/rutaLogin")
 
 const app=express();
 const puerto=8080;
@@ -23,3 +24,5 @@ app.get("/",(req,res)=>{
 app.use("/crearUsuario/",express.json(),cors(corsConfig),rutas);
 
 app.use("/obteniendoDatos/",rutas);
+
+app.use('/login/',express.json(),cors(corsConfig),rutaLogin)
