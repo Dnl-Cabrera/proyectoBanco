@@ -15,8 +15,6 @@ import TablaDatos from "../../../components/Administrador/TablaDatos";
 import Style from "./ClienteSolicitudCredito.css";
 
 
-
-
 class ClienteSolicitudCredito extends React.Component {
 
 
@@ -37,48 +35,60 @@ class ClienteSolicitudCredito extends React.Component {
     claseDiv2 = React.createRef();
 
     //Ref para identificar los input y poder agregarle los datos desde la DB
-    input_cuotasMora = React.createRef();
-    input_estado = React.createRef();
-    input_fcorte = React.createRef();
-    input_ffinalizacion = React.createRef();
+    input_nombre = React.createRef();
+    input_tipoIdentificaion = React.createRef();
+    input_numeroIdentificaion = React.createRef();
+    input_fechaSolicitud = React.createRef();
+    input_valorSolicitado = React.createRef();
+    input_fechaAprobacion = React.createRef();
+    input_valorAprobado = React.createRef();
+    input_fechaRechazo = React.createRef();
     input_mesesCredito = React.createRef();
-    input_tipoCredito = React.createRef();
+    input_fechaFinalizacion = React.createRef();
+    input_estadoSolicitud = React.createRef();
 
     //Simulación de DB
     peticion = {
         productos: [
             {
-                "name": "Credito libre inversión",
-                "identificacion": "123456789",
-                "numero_producto": "0025489678",
-                "fecha_inicio": "30/09/2021",
-                "fecha_corte": "15/09/2021",
-                "meses_credito": "10",
-                "fecha_finalizacion": "15/07/2022",
-                "estado": "pendiente",
-                "monto_solicitado": "200000",
+                "nombre": "Credito libre inversión",
+                "tipoIdentificacion": "Cedula",
+                "numeroIdentificacion": "1234567891",
+                "fechaSolicitud": "30/09/2021",
+                "valorSolicitado": "30/09/2021",
+                "fechaAprobacion": "15/09/2021",
+                "valorAprobado": "30/09/2021",
+                "fechaRechazo": "15/09/2021",
+                "mesesCredito": "10",
+                "fechaFinalizacion": "15/07/2022",
+                "estadoSolicitud": "pendiente",
+
             },
             {
-                "name": "Credito vivienda",
-                "identificacion": "123456789",
-                "numero_producto": "00254857912",
-                "fecha_inicio": "30/09/2021",
-                "fecha_corte": "15/09/2021",
-                "meses_credito": "22",
-                "fecha_finalizacion": "15/07/2023",
-                "estado": "pendiente",
-                "monto_solicitado": "500000",
+                "nombre": "Credito libre inversión",
+                "tipoIdentificacion": "Cedula",
+                "numeroIdentificacion": "1234567892",
+                "fechaSolicitud": "30/09/2021",
+                "valorSolicitado": "30/09/2021",
+                "fechaAprobacion": "15/09/2021",
+                "valorAprobado": "30/09/2021",
+                "fechaRechazo": "15/09/2021",
+                "mesesCredito": "10",
+                "fechaFinalizacion": "15/07/2022",
+                "estadoSolicitud": "pendiente",
             },
             {
-                "name": "Credito compra de cartera",
-                "identificacion": "123456789",
-                "numero_producto": "0043489678",
-                "fecha_inicio": "30/09/2020",
-                "fecha_corte": "15/09/2020",
-                "meses_credito": "10",
-                "fecha_finalizacion": "15/07/2021",
-                "estado": "pendiente",
-                "monto_solicitado": "3000000",
+                "nombre": "Credito libre inversión",
+                "tipoIdentificacion": "Cedula",
+                "numeroIdentificacion": "1234567893",
+                "fechaSolicitud": "30/09/2021",
+                "valorSolicitado": "30/09/2021",
+                "fechaAprobacion": "15/09/2021",
+                "valorAprobado": "30/09/2021",
+                "fechaRechazo": "15/09/2021",
+                "mesesCredito": "10",
+                "fechaFinalizacion": "15/07/2022",
+                "estadoSolicitud": "pendiente",
             },
         ]
     }
@@ -100,11 +110,6 @@ class ClienteSolicitudCredito extends React.Component {
 
                 <div className="row justify-content-center text-center p-4">
 
-
-
-
-
-
                     <div class="h100 d-flex justify-content-center clienteAdministradorConten">
 
                         <div class="clienteAdministradorBotones btn-group-vertical" role="group" aria-label="Vertical button group">
@@ -115,10 +120,6 @@ class ClienteSolicitudCredito extends React.Component {
                             <button type="button" class="btn btn-primary">Salir</button>
 
                         </div>
-
-
-
-
 
                         <div class=" solicitudCreditoIdentificador p-2 flex-fill bd-highlight ">
 

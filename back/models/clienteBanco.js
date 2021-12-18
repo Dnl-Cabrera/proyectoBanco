@@ -5,13 +5,15 @@ const Schema = mongoose.Schema;
 
 const modelSchem = new Schema({
     nombre:String,
-    tipoCedula:String,
-    numeroCedula:Number,
+    tipoIdentificacion:String,
+    numeroIdentificacion:Number,
     fechaSolicitud:Date,
     valorSolicitado:Number,
     fechaAprobacion:Date,
     valorAprobado:Number,
     fechaRechazo:Date,
+    mesesCredito:Number,
+    fechaFinaliacion:Date,
     estadoSolicitud:String,
 });
 

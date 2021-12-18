@@ -2,6 +2,7 @@ const express=require("express");
 const cors=require("cors");
 
 const rutas=require("./Routes/rutasAdministrador")
+const rutas=require("./Routes/rutasCliente")
 
 const app=express();
 const puerto=8080;

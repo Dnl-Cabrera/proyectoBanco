@@ -1,7 +1,7 @@
 const express=require("express");
 const rutas=express.Router();
 
-const consulta=require("../models/comunidadBanco")
+const consulta=require("../models/clienteBanco")
 
 
 rutas.get("/obteniendoDatos", async (req,res)=>{
