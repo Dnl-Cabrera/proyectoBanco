@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Component
 import TablaDatos from "../../../components/Administrador/TablaDatos";
+import NavAdministrador from "../../../components/Administrador/NavAdministrador/NavAdministrador";
 
 //CSS
 import Style from "./AdminAprobarSolicitud.module.css";
@@ -90,63 +91,67 @@ class AdminAprobarSolicitud extends React.Component {
     render() {
 
         return (
-            <div className="col-sm-12">
-                <div className="row justify-content-center text-center p-4">
-                    <h1>Aceptar solicitudes de credito</h1>
-                    <br />
-                    <div className="col-sm-10">
-                        <Form onSubmit={this.consultarDato}>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Ingresa la cedula del usuario para visualizar los productos del cliente</Form.Label>
-                                <Form.Control id={Style['celda-input']} type="number" placeholder="Ingresa la identificación" ref={this.input_id} />
-                                <Form.Text className="text-muted">
-                                    Los datos de la cedula deben ser numericos.
-                                </Form.Text>
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Consultar
-                            </Button>
-                        </Form>
+            <div>
+                <NavAdministrador/>
+                <div className="col-sm-12">
+                    <div className="row justify-content-center text-center p-4">
+                        <h1>Aceptar solicitudes de credito</h1>
+                        <br />
+                        <div className="col-sm-10">
+                            <Form onSubmit={this.consultarDato}>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Ingresa la cedula del usuario para visualizar los productos del cliente</Form.Label>
+                                    <Form.Control id={Style['celda-input']} type="number" placeholder="Ingresa la identificación" ref={this.input_id} />
+                                    <Form.Text className="text-muted">
+                                        Los datos de la cedula deben ser numericos.
+                                    </Form.Text>
+                                </Form.Group>
+                                <Button variant="primary" type="submit">
+                                    Consultar
+                                </Button>
+                            </Form>
+                        </div>
+                        <br />
+                        <div name="visualizarProductos" className="col-sm-12 d-none" ref={this.claseDiv2}>
+                            <h1>Productos del cliente</h1>
+                            <Table striped bordered hover size="sm">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Tipo credito</th>
+                                        <th>Identificación</th>
+                                        <th># producto</th>
+                                        <th>Meses credito</th>
+                                        <th>Estado</th>
+                                        <th>Monto solicitado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        this.peticion.productos.map((producto, index) => {
+                                            return (
+                                                <tr>
+                                                    <td>{index + 1}</td>
+                                                    <td>{producto.name}</td>
+                                                    <td>{producto.identificacion}</td>
+                                                    <td>{producto.numero_producto}</td>
+                                                    <td>{producto.meses_credito}</td>
+                                                    <td>{producto.estado}</td>
+                                                    <td>{producto.monto_solicitado}</td>
+                                                    <td><Button onClick={this.btnModificar} ref={this.modificar} name={producto.numero_producto}>Aceptar</Button>
+                                                        <Button onClick={this.btnModificar} ref={this.modificar} name={producto.numero_producto}>Eliminar</Button></td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </tbody>
+                            </Table>
+                        </div>
+
                     </div>
-                    <br />
-                    <div name="visualizarProductos" className="col-sm-12 d-none" ref={this.claseDiv2}>
-                        <h1>Productos del cliente</h1>
-                        <Table striped bordered hover size="sm">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Tipo credito</th>
-                                    <th>Identificación</th>
-                                    <th># producto</th>
-                                    <th>Meses credito</th>
-                                    <th>Estado</th>
-                                    <th>Monto solicitado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.peticion.productos.map((producto, index) => {
-                                        return (
-                                            <tr>
-                                                <td>{index + 1}</td>
-                                                <td>{producto.name}</td>
-                                                <td>{producto.identificacion}</td>
-                                                <td>{producto.numero_producto}</td>
-                                                <td>{producto.meses_credito}</td>
-                                                <td>{producto.estado}</td>
-                                                <td>{producto.monto_solicitado}</td>
-                                                <td><Button onClick={this.btnModificar} ref={this.modificar} name={producto.numero_producto}>Aceptar</Button>
-                                                <Button onClick={this.btnModificar} ref={this.modificar} name={producto.numero_producto}>Eliminar</Button></td>
-                                            </tr>
-                                        )
-                                    })
-                                }
-                            </tbody>
-                        </Table>
-                    </div>
-                    
                 </div>
             </div>
+
         );
     }
 

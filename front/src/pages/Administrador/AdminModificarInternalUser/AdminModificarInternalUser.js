@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Component
 import TablaDatos from "../../../components/Administrador/TablaDatos";
+import NavAdministrador from "../../../components/Administrador/NavAdministrador/NavAdministrador";
 
 //CSS
 import Style from "./AdminModificarInternalUser.module.css"
@@ -82,6 +83,7 @@ class AdminModificarInternalUser extends React.Component {
         return (
 
             <div >
+                <NavAdministrador />
                 <div className="row justify-content-center text-center p-4">
                     <h1>Modificar o eleminar usuarios internos</h1>
                     <br />

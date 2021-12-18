@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Component
 import TablaDatos from "../../../components/Administrador/TablaDatos";
+import NavAdministrador from "../../../components/Administrador/NavAdministrador/NavAdministrador";
 
 //CSS
 import Style from "./AdminModificarCredito.module.css";
@@ -137,80 +138,84 @@ class AdminModificarCredito extends React.Component {
     render() {
 
         return (
-            <div className="col-sm-12">
-                <div className="row justify-content-center text-center p-4">
-                    <h1>Modificar o eleminar credito usuarios</h1>
-                    <br />
-                    <div className="col-sm-10">
-                        <Form onSubmit={this.consultarDato}>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Label>Ingresa la cedula del usuario para visualizar los productos del cliente</Form.Label>
-                                <Form.Control id={Style['celda-input']} type="number" placeholder="Ingresa la identificación" ref={this.input_id} />
-                                <Form.Text className="text-muted">
-                                    Los datos de la cedula deben ser numericos.
-                                </Form.Text>
-                            </Form.Group>
-                            <Button variant="primary" type="submit">
-                                Consultar
-                            </Button>
-                        </Form>
-                    </div>
-                    <br />
-                    <div name="visualizarProductos" className="col-sm-12 d-none" ref={this.claseDiv2}>
-                        <h1>Productos del cliente</h1>
-                        <Table striped bordered hover size="sm">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Tipo credito</th>
-                                    <th>Identificación</th>
-                                    <th># producto</th>
-                                    <th>Fecha inicio</th>
-                                    <th>Fecha corte</th>
-                                    <th>Meses credito</th>
-                                    <th>Fecha finalización</th>
-                                    <th>Estado</th>
-                                    <th>Cuotas mora</th>
-                                    <th>Modificar</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    this.peticion.productos.map((producto, index) => {
-                                        return (
-                                            <tr>
-                                                <td>{index + 1}</td>
-                                                <td>{producto.name}</td>
-                                                <td>{producto.identificacion}</td>
-                                                <td>{producto.numero_producto}</td>
-                                                <td>{producto.fecha_inicio}</td>
-                                                <td>{producto.fecha_corte}</td>
-                                                <td>{producto.meses_credito}</td>
-                                                <td>{producto.fecha_finalizacion}</td>
-                                                <td>{producto.estado}</td>
-                                                <td>{producto.cuotas_mora}</td>
-                                                <td><Button onClick={this.btnModificar} ref={this.modificar} name={producto.numero_producto}>Modificar</Button></td>
-                                            </tr>
-                                        )
-                                    })
-                                }
-                            </tbody>
-                        </Table>
-                    </div>
-                    <div className="col-sm-8 d-none" ref={this.clase}>
-                        <h1>Modificar producto #{this.state.producto}</h1>
-                        <TablaDatos titulo1="Tipo credito" titulo2="Fecha corte" contenido1="tipo_credito" contenido2="fecha_corte" referencia1={this.input_tipoCredito} referencia2={this.input_fcorte} />
-                        <TablaDatos titulo1="Meses credito" titulo2="Fecha finalización" contenido1="meses_credito" contenido2="fecha_finalizacion" referencia1={this.input_mesesCredito} referencia2={this.input_ffinalizacion} />
-                        <TablaDatos titulo1="Estado" titulo2="Cuotas mora" contenido1="estado" contenido2="cuotas_mora" referencia1={this.input_estado} referencia2={this.input_cuotasMora} />
-                        <div className="p-1">
-                            <Button onClick={this.btnModificarDB} ref={this.modificarDB}>Modificar</Button>
+            <div>
+                <NavAdministrador />
+                <div className="col-sm-12">
+                    <div className="row justify-content-center text-center p-4">
+                        <h1>Modificar o eleminar credito usuarios</h1>
+                        <br />
+                        <div className="col-sm-10">
+                            <Form onSubmit={this.consultarDato}>
+                                <Form.Group className="mb-3" controlId="formBasicEmail">
+                                    <Form.Label>Ingresa la cedula del usuario para visualizar los productos del cliente</Form.Label>
+                                    <Form.Control id={Style['celda-input']} type="number" placeholder="Ingresa la identificación" ref={this.input_id} />
+                                    <Form.Text className="text-muted">
+                                        Los datos de la cedula deben ser numericos.
+                                    </Form.Text>
+                                </Form.Group>
+                                <Button variant="primary" type="submit">
+                                    Consultar
+                                </Button>
+                            </Form>
                         </div>
-                        <div className="p-1">
-                            <Button onClick={this.btnEliminar} ref={this.eliminarDB}>Eliminar</Button>
+                        <br />
+                        <div name="visualizarProductos" className="col-sm-12 d-none" ref={this.claseDiv2}>
+                            <h1>Productos del cliente</h1>
+                            <Table striped bordered hover size="sm">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Tipo credito</th>
+                                        <th>Identificación</th>
+                                        <th># producto</th>
+                                        <th>Fecha inicio</th>
+                                        <th>Fecha corte</th>
+                                        <th>Meses credito</th>
+                                        <th>Fecha finalización</th>
+                                        <th>Estado</th>
+                                        <th>Cuotas mora</th>
+                                        <th>Modificar</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        this.peticion.productos.map((producto, index) => {
+                                            return (
+                                                <tr>
+                                                    <td>{index + 1}</td>
+                                                    <td>{producto.name}</td>
+                                                    <td>{producto.identificacion}</td>
+                                                    <td>{producto.numero_producto}</td>
+                                                    <td>{producto.fecha_inicio}</td>
+                                                    <td>{producto.fecha_corte}</td>
+                                                    <td>{producto.meses_credito}</td>
+                                                    <td>{producto.fecha_finalizacion}</td>
+                                                    <td>{producto.estado}</td>
+                                                    <td>{producto.cuotas_mora}</td>
+                                                    <td><Button onClick={this.btnModificar} ref={this.modificar} name={producto.numero_producto}>Modificar</Button></td>
+                                                </tr>
+                                            )
+                                        })
+                                    }
+                                </tbody>
+                            </Table>
+                        </div>
+                        <div className="col-sm-8 d-none" ref={this.clase}>
+                            <h1>Modificar producto #{this.state.producto}</h1>
+                            <TablaDatos titulo1="Tipo credito" titulo2="Fecha corte" contenido1="tipo_credito" contenido2="fecha_corte" referencia1={this.input_tipoCredito} referencia2={this.input_fcorte} />
+                            <TablaDatos titulo1="Meses credito" titulo2="Fecha finalización" contenido1="meses_credito" contenido2="fecha_finalizacion" referencia1={this.input_mesesCredito} referencia2={this.input_ffinalizacion} />
+                            <TablaDatos titulo1="Estado" titulo2="Cuotas mora" contenido1="estado" contenido2="cuotas_mora" referencia1={this.input_estado} referencia2={this.input_cuotasMora} />
+                            <div className="p-1">
+                                <Button onClick={this.btnModificarDB} ref={this.modificarDB}>Modificar</Button>
+                            </div>
+                            <div className="p-1">
+                                <Button onClick={this.btnEliminar} ref={this.eliminarDB}>Eliminar</Button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         );
     }
 

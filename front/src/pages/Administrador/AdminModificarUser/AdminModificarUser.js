@@ -10,6 +10,7 @@ import Style from "./AdminModificarUser.module.css"
 
 //Components
 import TablaDatos from "../../../components/Administrador/TablaDatos";
+import NavAdministrador from "../../../components/Administrador/NavAdministrador/NavAdministrador";
 
 class AdminModificarUser extends React.Component {
 
@@ -82,6 +83,7 @@ class AdminModificarUser extends React.Component {
         return (
 
             <div >
+                <NavAdministrador />
                 <div className="row justify-content-center text-center p-4">
                     <h1>Modificar o eleminar usuarios</h1>
                     <br />

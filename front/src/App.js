@@ -59,7 +59,14 @@ class App extends React.Component{
                             <Route path={"/"} element={<InicioAplicacion/>}/>
                             <Route path={"/login"} element={<Login bus={this.datos_Validacion}/>}/>
                             <Route path={"/registro"} element={<Registro/>}/>
+                            {/*Rutas administrador*/}
                             <Route path={"/inicioAdministrador"} element={<AdminInicio/>}/>
+                            <Route path={"/AdminAprobarSolicitud"} element={<AdminAprobarSolicitud/>}/>
+                            <Route path={"/AdminModificarCredito"} element={<AdminModificarCredito/>}/>
+                            <Route path={"/AdminModificarInternalUser"} element={<AdminModificarInternalUser/>}/>
+                            <Route path={"/AdminModificarUser"} element={<AdminModificarUser/>}/>
+                            <Route path={"/VisualizarUser"} element={<VisualizarUser/>}/>
+                            {/*Rutas cliente*/}
                             <Route path={"/inicioCliente"} element={<ClienteSolicitudCredito/>}/>
                             
                         </Routes>

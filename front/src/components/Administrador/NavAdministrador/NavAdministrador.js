@@ -17,10 +17,11 @@ class NavAdministrador extends React.Component{
                     <Container>
                         <Navbar.Brand className={Style['sizeTitle']}  href="#homeAdmin">Administrador</Navbar.Brand>
                         <Nav variant="pills" className="me-auto" id={Style['sizeItem']}>
-                            <Nav.Link href="#vUser">Visualizar usuarios</Nav.Link>
-                            <Nav.Link href="#mUser">Modificar y/o eliminar usuarios</Nav.Link>
-                            <Nav.Link href="#mCred">Modificar y/o cancelar creditos</Nav.Link>
-                            <Nav.Link href="#mUserInter">Modificar datos usuario</Nav.Link>
+                            <Nav.Link href="/VisualizarUser">Visualizar usuarios</Nav.Link>
+                            <Nav.Link href="/AdminModificarUser">Modificar y/o eliminar clientes</Nav.Link>
+                            <Nav.Link href="/AdminModificarCredito">Modificar y/o cancelar creditos</Nav.Link>
+                            <Nav.Link href="/AdminModificarInternalUser">Modificar datos usuario</Nav.Link>
+                            <Nav.Link href="#mUserInter">Cerrar sesion</Nav.Link>
                         </Nav>
                     </Container>
                 </Navbar>
