@@ -1,7 +1,7 @@
 //React library
 
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 //Template css Library
 import "../../style/css/bootstrap.min.css"
 import "../../style/css/bootstrap-icons.css"
@@ -17,8 +17,6 @@ import PiePag from "../../components/Cliente/PiePag";
 
 class Registro extends React.Component {
 
-
-
     datosObtenidos = (datos) => {
 
         fetch("http://localhost:8080/crearUsuario/crear", {
@@ -31,7 +29,11 @@ class Registro extends React.Component {
             .then((res) => res.json())
             .catch((error) => console.error("Error:", error))
             .then((response) => {
-                console.log(response);
+                //console.log(response);
+                if(response.registro==="registrado"){
+                    alert("Usuario registrado")
+                    window.location.href="/login"
+                }
             });
     }
 

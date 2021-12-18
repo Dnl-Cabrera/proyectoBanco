@@ -8,6 +8,9 @@ import React from "react";
 import { Carousel} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+//Components
+import NavAdministrador from "../../../components/Administrador/NavAdministrador/NavAdministrador";
+
 //Resource
 import imagen1 from "./imagen1.jpg"
 import imagen2 from "./imagen2.jpg"
@@ -17,6 +20,9 @@ class AdminInicio extends React.Component {
     render() {
         return (
             <div className="row justify-content-center">
+
+            <NavAdministrador/>
+
                 <div className="text-center col-sm-8" style={{ padding: "30px" }}>
                     <Carousel variant="dark">
                         <Carousel.Item>

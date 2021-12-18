@@ -17,7 +17,7 @@ class NavBar extends React.Component {
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav mx-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="index.html#hero">Inicio</a>
+                                    <a class="nav-link" href="/">Inicio</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -36,7 +36,7 @@ class NavBar extends React.Component {
                                     <a class="nav-link" href="index.html#contact">Contactenos</a>
                                 </li>
 
-                                <a class="btn btn-primary" id="btn-login" href="login.html" role="button">Ingresar</a>
+                                <a class="btn btn-primary" id="btn-login" href="/login" role="button">Ingresar</a>
                             </ul>
                         </div>
                     </div>

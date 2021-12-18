@@ -1,5 +1,6 @@
 //React Library
 import React from "react";
+import { useNavigate } from "react-router-dom";
 //Template css library
 import "../../../style/css/bootstrap.min.css"
 import "../../../style/css/bootstrap-icons.css"
@@ -10,6 +11,8 @@ import "../../../style/css/custon.css"
 
 const FormularioLogin = ({bus}) =>{
 
+    let navigate=useNavigate()
+
     const envioDatos = (e) =>{
         e.preventDefault();
         let datos={
@@ -18,6 +21,10 @@ const FormularioLogin = ({bus}) =>{
         }
 
         bus(datos)
+    }
+
+    const registrar = () =>{
+        navigate("/registro")
     }
 
     return(
@@ -32,10 +39,23 @@ const FormularioLogin = ({bus}) =>{
                     <input type="password" className="form-control" placeholder="Ingrese contraseña" name="pass" required/>
                 </div>
 
-                <div className="login-registro">
-                    <input type="submit" className="btn btn-primary" value="Ingresar" name="Ingresar"/>
+                
+                <div className="row justify-content-center text-center" style={{textAlign:"center"}}>
+                <div className="login-registro text-center">
+                    <center>
+                    <table width="20%">
+                        <tr>
+                            <th>
+                                <input type="submit" className="btn btn-primary" value="Ingresar" name="Ingresar"/>
+                            </th>
+                            <th>
+                                <button className="btn btn-primary" onClick={registrar}>Registrarse</button>
+                            </th>
+                        </tr>
+                    </table>
+                    </center>
                 </div>
-
+                </div>
                 <div className="login-registro">
                     <button className="btn btn-danger">Recuperar contraseña</button>
                 </div>

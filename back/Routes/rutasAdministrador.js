@@ -24,7 +24,9 @@ rutas.post("/crear", async(req,res)=>{
 
     await usuario.save()
 
-    res.json(usuario)
+    res.json({
+        registro:"registrado"
+    })
 })
 
 module.exports = rutas;
