@@ -61,7 +61,7 @@ class AdminModificarUser extends React.Component {
     input_direccion = React.createRef();
 
 
-    eliminarUsuario = () =>{
+    eliminarUsuario = () => {
         let token = window.localStorage.token
 
         let cedula = this.input_identificacion.current.value
@@ -76,11 +76,11 @@ class AdminModificarUser extends React.Component {
             .then((res) => res.json())
             .catch((error) => console.error("Error:", error))
             .then((response) => {
-                if(response.mensaje==="Usuario Eliminado"){
+                if (response.mensaje === "Usuario Eliminado") {
                     this.clase.current.className = "row justify-content-center text-center d-none";
                     alert("Usuario eliminado")
                 }
-                else{
+                else {
                     alert("Usuario no se encontro o no se elimino")
                 }
             });
@@ -102,16 +102,16 @@ class AdminModificarUser extends React.Component {
             .then((res) => res.json())
             .catch((error) => console.error("Error:", error))
             .then((response) => {
-                console.log(response)
-                return response
+                //console.log(response)
+                //return response
+                alert("Datos actualizados")
             });
     }
 
 
-    cambiarDatos = (e) => {
+    cambiarDatos = () => {
         //console.log(this.input_nombre.current.value,this.input_identificacion.current.value);
-        
-        if (e.target.name === "modificar") {
+
             let datosNuevos = {
                 correo: this.input_correo.current.value,
                 direccion: this.input_direccion.current.value,
@@ -122,15 +122,9 @@ class AdminModificarUser extends React.Component {
                 rol: this.input_rol.current.value,
                 telefono: this.input_telefono.current.value
             }
-            console.log(datosNuevos);
+            //console.log(datosNuevos);
 
             this.actualizarDatos(datosNuevos)
-
-        }
-        else if (e.target.name === "eliminar") {
-            //Eliminar
-            console.log(this.usuarioPrueba);
-        }
     }
 
     consultarDato = (e) => {
@@ -156,9 +150,9 @@ class AdminModificarUser extends React.Component {
             .then((response) => {
                 //console.log(JSON.stringify(response).hasOwnProperty("error"));
 
-                if (!JSON.stringify(response).hasOwnProperty("error")){ //Para saber si tiene la clave error.
-                    if(response){
-                        if (response.tipoUsuario==="Cliente") {
+                if (!JSON.stringify(response).hasOwnProperty("error")) { //Para saber si tiene la clave error.
+                    if (response) {
+                        if (response.tipoUsuario === "Cliente") {
 
                             this.clase.current.className = "row justify-content-center text-center d";
                             this.setState({
@@ -171,7 +165,7 @@ class AdminModificarUser extends React.Component {
                                 rol: response.tipoUsuario,
                                 telefono: response.telefono
                             })
-    
+
                             this.input_nombre.current.value = this.state.name;
                             this.input_identificacion.current.value = this.state.identificacion;
                             this.input_pass.current.value = this.state.pass;
@@ -180,20 +174,22 @@ class AdminModificarUser extends React.Component {
                             this.input_direccion.current.value = this.state.direccion;
                             this.input_telefono.current.value = this.state.telefono;
                             this.input_correo.current.value = this.state.correo;
+
+                            alert("Usuario modificado")
                         }
                         else {
                             this.clase.current.className = "row justify-content-center text-center d-none";
-                        alert("Si desea consultar usuario interno o administrador dirigirse a la opcion correspondiente")
-                            
+                            alert("Si desea consultar usuario interno o administrador dirigirse a la opcion correspondiente")
+
                         }
                     }
-                    else{
+                    else {
                         this.clase.current.className = "row justify-content-center text-center d-none";
-                            alert("Usuario no encontrado")
+                        alert("Usuario no encontrado")
                     }
-                    
+
                 }
-               else {
+                else {
                     window.location.href = "/login"
                     alert("Sesion finalizada")
                 }
