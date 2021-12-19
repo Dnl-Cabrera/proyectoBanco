@@ -13,6 +13,9 @@ const modelSchem = new Schema({
     correo:String,
     pass:String,
     tipoUsuario:String,
+    genero: String,
+    direccion: String,
+    telefono: String
 });
 
 const consulta = mongoose.model("banco_comunidad",modelSchem);

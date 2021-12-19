@@ -17,6 +17,28 @@ import imagen2 from "./imagen2.jpg"
 
 class AdminInicio extends React.Component {
 
+    componentDidMount(){
+        
+        let rol = window.localStorage.getItem("rol");
+
+        if(rol==="Administrador"){
+            alert("Ud es administrador")
+        }
+        else if(rol==="Usuario interno"){
+            window.location.href="/inicioUsuarioInterno"
+        }
+        else if(rol==="Cliente"){
+            window.location.href="/inicioCliente";
+            alert("Ud no es administrador")
+        }
+        else{
+            window.location.href="/login"
+        }
+
+    }
+
+         
+
     render() {
         return (
             <div className="row justify-content-center">

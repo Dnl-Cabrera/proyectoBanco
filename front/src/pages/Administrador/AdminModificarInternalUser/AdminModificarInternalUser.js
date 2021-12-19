@@ -14,6 +14,26 @@ import Style from "./AdminModificarInternalUser.module.css"
 
 class AdminModificarInternalUser extends React.Component {
 
+    componentDidMount(){
+        
+        let rol = window.localStorage.getItem("rol");
+
+        if(rol==="Administrador"){
+            alert("Ud es administrador")
+        }
+        else if(rol==="Usuario interno"){
+            window.location.href="/inicioUsuarioInterno"
+        }
+        else if(rol==="Cliente"){
+            window.location.href="/inicioCliente";
+            alert("Ud no es administrador")
+        }
+        else{
+            window.location.href="/login"
+        }
+
+    }
+    
     input_id = React.createRef();
     clase = React.createRef();
 

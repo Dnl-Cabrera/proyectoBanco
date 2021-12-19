@@ -1,8 +1,10 @@
 const express=require("express");
 const cors=require("cors");
 
-const rutas=require("./Routes/rutasAdministrador")
+const rutasAdministrador=require("./Routes/rutasAdministrador")
 const rutaLogin=require("./Routes/rutaLogin")
+
+const validarToken=require("./Token/validarToken")
 
 const app=express();
 const puerto=8080;
@@ -21,8 +23,10 @@ app.get("/",(req,res)=>{
      })
 })
 
-app.use("/crearUsuario/",express.json(),cors(corsConfig),rutas);
+app.use("/crearUsuario/",express.json(),cors(corsConfig),rutasAdministrador);
 
-app.use("/obteniendoDatos/",rutas);
+app.use("/obteniendoDatos/",rutasAdministrador);
 
 app.use('/login/',express.json(),cors(corsConfig),rutaLogin)
+
+app.use('/administrador/',express.json(),cors(corsConfig),validarToken,rutasAdministrador)

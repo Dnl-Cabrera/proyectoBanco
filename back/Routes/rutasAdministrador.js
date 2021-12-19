@@ -29,4 +29,60 @@ rutas.post("/crear", async(req,res)=>{
     })
 })
 
+rutas.post("/consultarCliente", async(req,res)=>{
+
+    let cedula = req.body.cedula;
+
+    let usuario = await consulta.findOne({"numeroCedula":cedula})
+
+    res.json(usuario)
+
+    
+})
+
+rutas.put("/modificarCliente", async(req,res)=>{
+    let cedula = req.body.identificacion
+
+    let usuario = await consulta.findOne({"numeroCedula":cedula})
+
+    usuario.nombre = req.body.name
+    usuario.numeroCedula = req.body.identificacion
+    usuario.correo = req.body.correo
+    usuario.pass = req.body.pass
+    usuario.tipoUsuario = req.body.rol
+    usuario.genero = req.body.genero
+    usuario.direccion = req.body.direccion
+    usuario.telefono = req.body.telefono
+
+    console.log(usuario)
+
+    await usuario.save()
+
+    res.json({
+        mensaje:"Usuario actualizado",
+    })
+})
+
+rutas.delete("/eliminarCliente/:cedula", async(req,res)=>{
+
+    let cedula = req.params.cedula
+
+    try {
+        let usuario = await consulta.findOne({"numeroCedula":cedula})
+
+        await usuario.delete()
+
+        res.json({
+            mensaje:"Usuario Eliminado"
+        })
+    } catch (error) {
+        res.json({
+            mensaje:"Error Eliminando"
+        })
+    }
+
+    
+
+})
+
 module.exports = rutas;

@@ -17,6 +17,9 @@ const FormularioRegistro = ({bus}) => {
             "tipoCedula":e.target.tipoCedula.value,
             "numeroCedula":e.target.numeroCedula.value,
             "fechaExpedicion":e.target.fechaExpedicion.value,
+            "genero":e.target.genero.value,
+            "telefono":e.target.telefono.value,
+            "direccion":e.target.direccion.value,
             "valorIngresos":e.target.valorIngresos.value,
             "valorEgresos":e.target.valorEgresos.value,
             "correo":e.target.correo.value,
@@ -64,6 +67,21 @@ const FormularioRegistro = ({bus}) => {
                     <div className="input-group date" id="datepicker">
                         <input type="date" className="form-control" name="fechaExpedicion" required/>
                     </div>
+                </div>
+
+                <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
+                    <label for="Genero"></label>
+                    <input type="text" className="form-control" placeholder="Genero" name="genero" required/>
+                </div>
+
+                <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
+                    <label for="Telefono"></label>
+                    <input type="text" className="form-control" placeholder="Telefono" name="telefono" required/>
+                </div>
+
+                <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
+                    <label for="Dirección"></label>
+                    <input type="text" className="form-control" placeholder="Dirección" name="direccion" required/>
                 </div>
 
                 <div className="mb-3 mt-3 col-xs-2 col-md-4 center-block">
