@@ -14,6 +14,13 @@ import NavAdministrador from "../../../components/Administrador/NavAdministrador
 
 class VisualizarUser extends React.Component {
 
+    constructor() {
+        super();
+        this.state = {
+            "usuarios":[]
+        };
+    }
+
     peticion = {
         usuarios: [
             {
@@ -43,6 +50,37 @@ class VisualizarUser extends React.Component {
         ]
     }
 
+    tipoUsuario = React.createRef()
+
+
+    consultarTipoUsuario = () => {
+        //console.log(this.clase);
+        let token = window.localStorage.token
+
+        let usuario = {
+            "tipo_usuario": this.tipoUsuario.current.value,
+        }
+
+
+        fetch("http://localhost:8080/administrador/consultarTipoUsuario", {
+            method: "POST",
+            body: JSON.stringify(usuario),
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token-jwt": token,
+            },
+        })
+            .then((res) => res.json())
+            .catch((error) => console.error("Error:", error))
+            .then((response) => {
+                //console.log(response)
+                this.setState({
+                "usuarios":response,
+                })
+                
+            })
+    }
+
     render() {
 
         return (
@@ -57,12 +95,12 @@ class VisualizarUser extends React.Component {
                             <Form>
                                 <Form.Group className="mb-3" controlId="formBasicEmail">
                                     <Form.Label>Ingresa el tipo de usuario que deseas ver</Form.Label>
-                                    <Form.Control type="text" placeholder="Ingresa el rol" />
+                                    <Form.Control type="text" placeholder="Ingresa el rol" ref={this.tipoUsuario}/>
                                     <Form.Text className="text-muted">
                                         Los tipos de usuario son: usuario, interno y administrador
                                     </Form.Text>
                                 </Form.Group>
-                                <Button variant="primary" type="submit">
+                                <Button variant="primary" type="button" onClick={this.consultarTipoUsuario}>
                                     Consultar
                                 </Button>
                             </Form>
@@ -72,25 +110,25 @@ class VisualizarUser extends React.Component {
                                     <tr>
                                         <th>#</th>
                                         <th>Nombre del usuario</th>
-                                        <th>Alias</th>
+                                        <th>Identificación</th>
                                         <th>Rol</th>
-                                        <th>¿Cumple con los requisitos?</th>
-                                        <th>Fecha de creación</th>
-                                        <th>Hora</th>
+                                        <th>Correo</th>
+                                        <th>Genero</th>
+                                        <th>Telefono</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     {
-                                        this.peticion.usuarios.map((usuario, index) => {
+                                        this.state.usuarios.map((usuario, index) => {
                                             return (
                                                 <tr>
                                                     <td>{index + 1}</td>
-                                                    <td>{usuario.name}</td>
-                                                    <td>{usuario.alias}</td>
-                                                    <td>{usuario.rol}</td>
-                                                    <td>{usuario.requisitos}</td>
-                                                    <td>{usuario.fechaCreacion}</td>
-                                                    <td>{usuario.hora}</td>
+                                                    <td>{usuario.nombre}</td>
+                                                    <td>{usuario.numeroCedula}</td>
+                                                    <td>{usuario.tipoUsuario}</td>
+                                                    <td>{usuario.correo}</td>
+                                                    <td>{usuario.genero}</td>
+                                                    <td>{usuario.telefono}</td>
                                                 </tr>
                                             )
                                         })

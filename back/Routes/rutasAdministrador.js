@@ -40,6 +40,18 @@ rutas.post("/consultarCliente", async(req,res)=>{
     
 })
 
+rutas.post("/consultarTipoUsuario", async(req,res)=>{
+
+    let tipoUsuario = req.body.tipo_usuario
+
+    let usuarios = await consulta.find({tipoUsuario:tipoUsuario})
+
+    //console.log(usuarios)
+
+    res.json(usuarios)
+
+})
+
 rutas.post("/consultarCorreo", async(req,res)=>{
 
     let correo = req.body.correo;
