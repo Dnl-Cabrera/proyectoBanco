@@ -17,7 +17,63 @@ import PiePag from "../../components/Cliente/PiePag";
 
 class Registro extends React.Component {
 
-    datosObtenidos = (datos) => {
+
+    consultarCorreo = (datos) => {
+
+        let correo = {
+            "correo": datos.correo,
+        }
+
+        fetch("http://localhost:8080/crearUsuario/consultarCorreo", {
+            method: "POST",
+            body: JSON.stringify(correo),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .catch((error) => console.error("Error:", error))
+            .then((response) => {
+                
+                if(response){
+                    alert("El correo ingresado para el usuario ya se encuentra registrado en la DB")
+                }
+                else{
+                    this.crearUsuario(datos)
+                }
+            })
+        
+    }
+    
+    
+    consultarCedula = (datos) => {
+        //console.log(this.clase);
+
+        let cedula = {
+            "cedula": datos.numeroCedula,
+        }
+
+        fetch("http://localhost:8080/crearUsuario/consultarCliente", {
+            method: "POST",
+            body: JSON.stringify(cedula),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .catch((error) => console.error("Error:", error))
+            .then((response) => {
+                if(response){
+                    alert("Numero de cedula ya registrado, por favor ingrese otro numero de identificación")
+                }
+                else{
+                    this.consultarCorreo(datos);
+                }
+            })
+
+    }
+
+    crearUsuario = (datos) => {
 
         fetch("http://localhost:8080/crearUsuario/crear", {
             method: "POST",
@@ -56,7 +112,7 @@ class Registro extends React.Component {
                 <section className="registro">
                     <div className="container mt-3">
 
-                        <FormularioRegistro bus={this.datosObtenidos} />
+                        <FormularioRegistro bus={this.consultarCedula} />
 
                     </div>
                 </section>

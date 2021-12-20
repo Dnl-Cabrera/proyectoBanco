@@ -40,6 +40,17 @@ rutas.post("/consultarCliente", async(req,res)=>{
     
 })
 
+rutas.post("/consultarCorreo", async(req,res)=>{
+
+    let correo = req.body.correo;
+
+    let usuario = await consulta.findOne({"correo":correo})
+
+    res.json(usuario)
+
+    
+})
+
 rutas.put("/modificarCliente", async(req,res)=>{
     let cedula = req.body.identificacion
 
