@@ -70,7 +70,7 @@ class App extends React.Component{
                             <Route path={"/AdminModificarUser"} element={<AdminModificarUser/>}/>
                             <Route path={"/VisualizarUser"} element={<VisualizarUser/>}/>
                             {/*Rutas cliente*/}
-                            <Route path={"/inicioCliente"} element={<ClienteSolicitudCredito/>}/>
+                            
                             <Route path={"/ClienteSolicitudProrroga"} element={<ClienteSolicitudProrroga/>}/>
                             <Route path={"/ClienteCertificado"} element={<ClienteCertificado/>}/>
                             <Route path={"/ClienteAdministrador"} element={<ClienteAdministrador/>}/>
