@@ -7,8 +7,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "../../../components/Cliente/NavBar";
 import PiePag from "../../../components/Cliente/PiePag";
 
+<<<<<<< HEAD
 //Components
 import NavBarVertical from "./../../../components/Cliente/NavBarVertical"
+=======
+//Component
+import TablaDatos from "../../../components/Cliente/TablaDatos";
+>>>>>>> cc7d39e10308d17561addd6d0293f154cf038c36
 
 //CSS
 import Style from "./ClienteSolicitudCredito.css";
@@ -114,13 +119,86 @@ class ClienteSolicitudCredito extends React.Component {
     //Este metodo es para consultar en la DB el valor y colocar los datos en la tabla.
     consultarDato = (e) => {
         e.preventDefault();
-        if (this.input_id.current.value !== "") {
-            this.claseDiv2.current.className = "col-sm-12 d";
-            //En esta sección se debe modificar la variable petición para que se actualice la tabla.
+        //console.log(this.clase);
+
+        let datos = {
+            "cedula": this.input_id.current.value,
         }
+
+        let token = window.localStorage.token
+
+        fetch("http://localhost:8080/administrador/consultarSolicitud", {
+            method: "POST",
+            body: JSON.stringify(datos),
+            headers: {
+                "Content-Type": "application/json",
+                "auth-token-jwt": token
+            },
+        })
+            .then((res) => res.json())
+            .catch((error) => console.error("Error:", error))
+            .then((response) => {
+                //console.log(JSON.stringify(response).hasOwnProperty("error"));
+
+                if (!JSON.stringify(response).hasOwnProperty("error")) { //Para saber si tiene la clave error.
+                    if (response) {
+                        if (response.tipoUsuario === "Cliente") {
+
+                            this.clase.current.className = "row justify-content-center text-center d";
+                            this.setState({
+                                nombre: response.nombre,
+                                tipoIdentificacion: response.tipoIdentificacion,
+                                numeroIdentificacion: response.numeroIdentificacion,
+                                fechaSolicitud: response.fechaSolicitud,
+                                valorSolicitado: response.valorSolicitado,
+                                fechaAprobacion: response.fechaAprobacion,
+                                valorAprobado: response.valorAprobado,
+                                fechaRechazo: response.fechaRechazo,
+                                mesesCredito: response.mesesCredito,
+                                fechaFinalizacion: response.fechaFinalizacion,
+                                estadoSolicitud: response.estadoSolicitud
+                     
+                            })
+
+                            this.input_nombre.current.value = this.state.nombre,
+                            this.input_tipoIdentificacion.current.value = this.state.tipoIdentificacion,
+                            this.input_numeroIdentificacion.current.value = this.state.numeroIdentificacion,
+                            this.input_fechaSolicitud.current.value = this.state.fechaSolicitud,
+                            this.input_valorSolicitado.current.value = this.state.valorSolicitado,
+                            this.input_fechaAprobacion.current.value = this.state.fechaAprobacion,
+                            this.input_valorAprobado.current.value = this.state.valorAprobado,
+                            this.input_fechaRechazo.current.value = this.state.fechaRechazo,
+                            this.input_mesesCredito.current.value = this.state.mesesCredito,
+                            this.input_fechaFinalizacion.current.value = this.state.fechaFinalizacion,
+                            this.input_estadoSolicitud.current.value = this.state.estadoSolicitud
+
+                            alert("Solicitud modificada")
+                        }
+                        else {
+                            this.clase.current.className = "row justify-content-center text-center d-none";
+                            alert("Si desea consultar usuario interno o administrador dirigirse a la opcion correspondiente")
+
+                        }
+                    }
+                    else {
+                        this.clase.current.className = "row justify-content-center text-center d-none";
+                        alert("Solicitud no encontrada")
+                    }
+
+                }
+                else {
+                    window.location.href = "/login"
+                    alert("Sesion finalizada")
+                }
+
+            });
+
     }
 
+<<<<<<< HEAD
     
+=======
+>>>>>>> cc7d39e10308d17561addd6d0293f154cf038c36
 
     render() {
         return (
