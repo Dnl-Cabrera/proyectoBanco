@@ -1,7 +1,6 @@
 //React library
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
 //Template css Library
 import "../../style/css/bootstrap.min.css"
 import "../../style/css/bootstrap-icons.css"
@@ -101,10 +100,10 @@ class Registro extends React.Component {
                 
                 <NavBar/>
 
-                <section class="login p-3">
-                    <div class="container">
-                        <div class="login-title">
-                            <p><h1 class="text-center text-dark">Registro</h1></p>
+                <section className="login p-3">
+                    <div className="container">
+                        <div className="login-title">
+                            <p><h1 className="text-center text-dark">Registro</h1></p>
                         </div>
                     </div>
                 </section>

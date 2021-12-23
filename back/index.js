@@ -3,6 +3,7 @@ const cors=require("cors");
 
 const rutasAdministrador=require("./Routes/rutasAdministrador")
 const rutaLogin=require("./Routes/rutaLogin")
+const rutasAdministradorAprobarCredito=require("./Routes/rutasAdministradorAprobarCredito")
 
 const validarToken=require("./Token/validarToken")
 
@@ -30,3 +31,5 @@ app.use("/obteniendoDatos/",rutasAdministrador);
 app.use('/login/',express.json(),cors(corsConfig),rutaLogin)
 
 app.use('/administrador/',express.json(),cors(corsConfig),validarToken,rutasAdministrador)
+
+app.use('/aprobarCredito/',express.json(),cors(corsConfig),validarToken,rutasAdministradorAprobarCredito)

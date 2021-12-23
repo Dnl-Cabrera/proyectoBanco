@@ -175,7 +175,7 @@ class AdminModificarUser extends React.Component {
                             this.input_telefono.current.value = this.state.telefono;
                             this.input_correo.current.value = this.state.correo;
 
-                            alert("Usuario modificado")
+                            //alert("Usuario modificado")
                         }
                         else {
                             this.clase.current.className = "row justify-content-center text-center d-none";

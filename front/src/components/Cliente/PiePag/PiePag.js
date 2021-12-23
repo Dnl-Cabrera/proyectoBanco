@@ -27,15 +27,15 @@ class PiePag extends React.Component {
 
                             <div className="col-lg-3 col-5 ms-auto">
                                 <ul className="social-icon">
-                                    <li><a href="#" className="social-icon-link bi-facebook"></a></li>
+                                    <li><a href="/" className="social-icon-link bi-facebook">_</a></li>
 
-                                    <li><a href="#" className="social-icon-link bi-twitter"></a></li>
+                                    <li><a href="/" className="social-icon-link bi-twitter">_</a></li>
 
-                                    <li><a href="#" className="social-icon-link bi-whatsapp"></a></li>
+                                    <li><a href="/" className="social-icon-link bi-whatsapp">_</a></li>
 
-                                    <li><a href="#" className="social-icon-link bi-instagram"></a></li>
+                                    <li><a href="/" className="social-icon-link bi-instagram">_</a></li>
 
-                                    <li><a href="#" className="social-icon-link bi-youtube"></a></li>
+                                    <li><a href="/" className="social-icon-link bi-youtube">_</a></li>
                                 </ul>
                             </div>
 

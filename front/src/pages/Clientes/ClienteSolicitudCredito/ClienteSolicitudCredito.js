@@ -1,6 +1,5 @@
 //React Library
 import React from "react";
-
 //React-Bootstrap Library
 import { Form, Button, Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -8,8 +7,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from "../../../components/Cliente/NavBar";
 import PiePag from "../../../components/Cliente/PiePag";
 
-//Component
-import TablaDatos from "../../../components/Administrador/TablaDatos";
+//Components
+import NavBarVertical from "./../../../components/Cliente/NavBarVertical"
 
 //CSS
 import Style from "./ClienteSolicitudCredito.css";
@@ -17,6 +16,24 @@ import Style from "./ClienteSolicitudCredito.css";
 
 class ClienteSolicitudCredito extends React.Component {
 
+    componentDidMount() {
+
+        let rol = window.localStorage.getItem("rol");
+
+        if (rol === "Administrador") {
+            console.log("Ud es administrador");
+        }
+        else if (rol === "Usuario interno" || rol === "Administrador") {
+            window.location.href = "/inicioUsuarioInterno"
+        }
+        else if (rol === "Cliente" || rol === "Administrador") {
+            console.log("Ud es ",rol)
+        }
+        else {
+            window.location.href = "/login"
+        }
+
+    }
 
     //Estado para guardar el numero de producto
     state = {
@@ -103,6 +120,8 @@ class ClienteSolicitudCredito extends React.Component {
         }
     }
 
+    
+
     render() {
         return (
             <div>
@@ -110,18 +129,11 @@ class ClienteSolicitudCredito extends React.Component {
 
                 <div className="row justify-content-center text-center p-4">
 
-                    <div class="h100 d-flex justify-content-center clienteAdministradorConten">
+                    <div className="h100 d-flex justify-content-center clienteAdministradorConten">
 
-                        <div class="clienteAdministradorBotones btn-group-vertical" role="group" aria-label="Vertical button group">
-                            <button type="button" class="btn btn-primary">Solicitar crédito</button>
-                            <button type="button" class="btn btn-primary">Generar historial</button>
-                            <button type="button" class="btn btn-primary">Solicita una prorroga</button>
-                            <button type="button" class="btn btn-primary">Generar certificado</button>
-                            <button type="button" class="btn btn-primary">Salir</button>
+                        <NavBarVertical/>
 
-                        </div>
-
-                        <div class=" solicitudCreditoIdentificador p-2 flex-fill bd-highlight ">
+                        <div className=" solicitudCreditoIdentificador p-2 flex-fill bd-highlight ">
 
                             <h1>Solicitud Crédito</h1>
                             <div className="col-sm-10">
@@ -179,22 +191,22 @@ class ClienteSolicitudCredito extends React.Component {
                             <h1>Nueva Solicitud</h1>
                             <div className="col-sm-10">
 
-                                <div class="row mb-3">
-                                    <label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm text-center">Indica el valor solicitado</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="" />
+                                <div className="row mb-3">
+                                    <label for="colFormLabelSm" className="col-sm-6 col-form-label col-form-label-sm text-center">Indica el valor solicitado</label>
+                                    <div className="col-sm-6">
+                                        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" placeholder="" />
                                     </div>
                                 </div>
 
-                                <div class="row mb-3">
-                                    <label for="colFormLabelSm" class="col-sm-6 col-form-label col-form-label-sm text-center">Ingrese el numero de cuotas en meses</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-sm" id="colFormLabelSm" placeholder="" />
+                                <div className="row mb-3">
+                                    <label for="colFormLabelSm" className="col-sm-6 col-form-label col-form-label-sm text-center">Ingrese el numero de cuotas en meses</label>
+                                    <div className="col-sm-6">
+                                        <input type="text" className="form-control form-control-sm" id="colFormLabelSm" placeholder="" />
                                     </div>
                                 </div>
 
-                                <div class="d-grid gap-2 col-6 mx-auto">
-                                    <button type="button" class="btn btn-primary ">Solicitar</button>
+                                <div className="d-grid gap-2 col-6 mx-auto">
+                                    <button type="button" className="btn btn-primary ">Solicitar</button>
                                 </div>
                             </div>
                         </div>

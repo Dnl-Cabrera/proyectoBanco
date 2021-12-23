@@ -8,11 +8,13 @@ import InicioAplicacion from "./pages/InicioAplicacion/"
 //Pages administrador
 import AdminAprobarSolicitud from "./pages/Administrador/AdminAprobarSolicitud"
 import AdminInicio from "./pages/Administrador/AdminInicio/AdminInicio";
-import NavAdministrador from "./components/Administrador/NavAdministrador/NavAdministrador"
 import AdminModificarCredito from "./pages/Administrador/AdminModificarCredito/AdminModificarCredito"
 import AdminModificarInternalUser from "./pages/Administrador/AdminModificarInternalUser/AdminModificarInternalUser"
 import AdminModificarUser from "./pages/Administrador/AdminModificarUser/AdminModificarUser"
 import VisualizarUser from "./pages/Administrador/VisualizarUser/VisualizarUser";
+
+//Cerrar sesion
+import CerrarSesion from "./pages/CerrarSesion";
 
 //Pagina Inicio
 import Login from "./pages/Login";
@@ -59,6 +61,7 @@ class App extends React.Component{
                             <Route path={"/"} element={<InicioAplicacion/>}/>
                             <Route path={"/login"} element={<Login bus={this.datos_Validacion}/>}/>
                             <Route path={"/registro"} element={<Registro/>}/>
+                            <Route path={"/cerrarSesion"} element={<CerrarSesion/>}/>
                             {/*Rutas administrador*/}
                             <Route path={"/inicioAdministrador"} element={<AdminInicio/>}/>
                             <Route path={"/AdminAprobarSolicitud"} element={<AdminAprobarSolicitud/>}/>
@@ -68,6 +71,9 @@ class App extends React.Component{
                             <Route path={"/VisualizarUser"} element={<VisualizarUser/>}/>
                             {/*Rutas cliente*/}
                             <Route path={"/inicioCliente"} element={<ClienteSolicitudCredito/>}/>
+                            <Route path={"/ClienteSolicitudProrroga"} element={<ClienteSolicitudProrroga/>}/>
+                            <Route path={"/ClienteCertificado"} element={<ClienteCertificado/>}/>
+                            <Route path={"/ClienteAdministrador"} element={<ClienteAdministrador/>}/>
                             
                         </Routes>
 
